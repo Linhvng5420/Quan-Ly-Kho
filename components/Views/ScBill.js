@@ -24,7 +24,7 @@ export default function ScBill({ navigation }) {
   const [ma, setMa] = useState('');
   const [sl, setSL] = useState('');
   const changeMa=(value)=>{
-    alert('Chọn sản phẩm ' + value.getTen())
+    alert('Đã Chọn: ' + value.getTen())
     setMa(value.getID())
   }
   const pushList=(product)=>{
@@ -62,7 +62,7 @@ export default function ScBill({ navigation }) {
           </View>
           <ScrollView style={{height: 190, width: '100%'}}>{listProds}</ScrollView>
           <View style={styles.form}>
-            <TextInput placeholder="Nhập số lượng....." style={styles.input} value={sl}
+            <TextInput placeholder="Số Lượng" style={styles.input} value={sl}
             onChangeText={(index)=>{
               if(index[index.length - 1] <= '9' && index[index.length - 1] >= '0'){
                 setSL(index)
@@ -198,8 +198,8 @@ const styles = StyleSheet.create({
   title: {
     width: '100%',
     textAlign: 'center',
-    paddingVertical: 13,
-    fontSize: 25,
+    paddingVertical: 5,
+    fontSize: 20,
     fontWeight: 'bold',
     backgroundColor: '#0FF',
   },
