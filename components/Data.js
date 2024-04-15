@@ -14,9 +14,9 @@ export default class StaticData{
     StaticData.dataProds.push(new Products(6, 'Tuong da T01', 'demo', 90, 120000, 'Tuong da phong thuy'));
     StaticData.dataBill.push(new Bill(1, 'Shop Si Le Hong Anh', 100000));
     StaticData.dataBill.push(new Bill(2, 'Shop DLOC', 120000));
-    StaticData.dataBill.push(new Bill(3, 'Shop Day Dep Minh Anh', 230000));
-    StaticData.dataBill.push(new Bill(4, 'Shop Si Le Minh Dai', 500000));
-    StaticData.dataBill.push(new Bill(5, 'Buon Chuyen Store', 150000));
-    StaticData.dataBill.push(new Bill(6, 'ADK Store', 200000));
+    // StaticData.dataBill.push(new Bill(3, 'Shop Day Dep Minh Anh', 230000));
+    // StaticData.dataBill.push(new Bill(4, 'Shop Si Le Minh Dai', 500000));
+    // StaticData.dataBill.push(new Bill(5, 'Buon Chuyen Store', 150000));
+    // StaticData.dataBill.push(new Bill(6, 'ADK Store', 200000));
   }
 }

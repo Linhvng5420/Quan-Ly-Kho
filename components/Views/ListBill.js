@@ -9,7 +9,9 @@ import ItemShopBill from '../ItemShopBill';
 import StaticData from '../Data';
 
 export default function ListBill({navigation}){
-  const [listBill, setList] = useState(null);   
+  const [listBill, setList] = useState(null);
+  
+  
   return(<View style={{height: '100%', backgroundColor: '#fff'}}>
     <View>
       <Text style={styles.title}>Danh Sách Hóa Đơn</Text>
@@ -26,7 +28,7 @@ export default function ListBill({navigation}){
             setList(list)
           }}
         >
-          <Text style={styles.btnText}>LÀM MỚI</Text>
+          <Text style={styles.btnText}>LÀM MỚI 🔄️</Text>
         </Pressable>
       <ScrollView style={styles.container}>{listBill}</ScrollView>
     </View>
@@ -72,14 +74,16 @@ export default function ListBill({navigation}){
 const styles = StyleSheet.create({
   btn:{
     marginTop: 10,
-    width: '90%',
+    width: '40%',
     alignSelf: 'center',
-    backgroundColor: '#0FF',
-    paddingVertical: 10
+    backgroundColor: '#2ECC71',
+    paddingVertical: 5,
+    borderRadius:10,
   },
   btnText:{
     textAlign: 'center', 
-    fontSize: 20
+    fontSize: 25,
+    color:'white',
   },
   navIcon:{
     width: 30,
@@ -97,7 +101,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 25
+    // borderRadius: 25
   },
   container: {
     height: '77%',
