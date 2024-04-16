@@ -58,231 +58,231 @@ export default function ScBill({ navigation }) {
   };
 
   return (
-      <View style={{ height: "100%", backgroundColor: "white" }}>
-        <ScrollView>
-          <View style={styles.container}>
-            {/*Hien thi ds san pham khi nhan tim kiem */}
-            <View style={styles.form}>
-              <TextInput
-                placeholder="Tìm Kiếm Sản Phẩm"
-                style={styles.input}
-                onChangeText={setChar}
-              />
-              <Pressable
-                style={styles.btnR}
-                onPress={() => {
-                  let list = [];
-                  for (let i = 0; i < StaticData.dataProds.length; i++) {
-                    if (
-                      StaticData.dataProds[i].getTen().indexOf(char) > -1 ||
-                      StaticData.dataProds[i].getMoTa().indexOf(char) > -1
-                    ) {
-                      list.push(
-                        <ProdItem
-                          onPress={changeMa}
-                          value={StaticData.dataProds[i]}
-                        />
-                      );
-                    }
-                  }
-                  setList(list);
-                }}
-              >
-                <Text style={styles.btnText}>TÌM KIẾM 🔎</Text>
-              </Pressable>
-            </View>
-
-            {/* hien thi ds sp */}
-            <ScrollView style={{ height: 350, width: "100%" }}>
-              {listProds}
-            </ScrollView>
-
-            {/* Them So Luong */}
-            <View style={{ width: "90%", marginBottom: 5, marginRight: -340 }}>
-              <TextInput
-                placeholder="SL"
-                style={{
-                  fontSize: 20,
-                  marginTop: 5,
-                  paddingLeft: 10,
-                  width: "20%",
-                  height: 30,
-                  borderWidth: 1,
-                  borderRadius: 5,
-                }}
-                value={sl}
-                onChangeText={(index) => {
+    <View style={{ height: "100%", backgroundColor: "white" }}>
+      <ScrollView>
+        <View style={styles.container}>
+          {/*Hien thi ds san pham khi nhan tim kiem */}
+          <View style={styles.form}>
+            <TextInput
+              placeholder="Tìm Kiếm Sản Phẩm"
+              style={styles.input}
+              onChangeText={setChar}
+            />
+            <Pressable
+              style={styles.btnR}
+              onPress={() => {
+                let list = [];
+                for (let i = 0; i < StaticData.dataProds.length; i++) {
                   if (
-                    index[index.length - 1] <= "9" &&
-                    index[index.length - 1] >= "0"
+                    StaticData.dataProds[i].getTen().indexOf(char) > -1 ||
+                    StaticData.dataProds[i].getMoTa().indexOf(char) > -1
                   ) {
-                    setSL(index);
-                  } else if (index == "") {
-                    setSL("");
+                    list.push(
+                      <ProdItem
+                        onPress={changeMa}
+                        value={StaticData.dataProds[i]}
+                      />
+                    );
                   }
-                }}
-              />
-              <Pressable
-                style={{
-                  position: "absolute",
-                  left: 90,
-                  marginTop: 5,
-                  width: "20%",
-                  height: 30,
-                  alignItems: "center",
-                  borderColor: "green",
-                  borderWidth: 1,
-                  borderRadius: 5,
-                }}
-                onPress={() => {
-                  if (sl != "" && ma != "") {
-                    for (let i = 0; i < StaticData.dataProds.length; i++) {
-                      if (StaticData.dataProds[i].getID() == ma) {
-                        pushList(StaticData.dataProds[i]);
-                        setMa("");
-                        setSL("");
-                        break;
-                      }
-                    }
-                  } else {
-                    alert("Chưa Chọn Sản Phẩm! \nChưa Nhập Số Lượng!");
-                  }
-
-                  let list = [];
-                  for (let i = 0; i < StaticData.dataProds.length; i++) {
-                    if (
-                      StaticData.dataProds[i].getTen().indexOf(char) > -1 ||
-                      StaticData.dataProds[i].getMoTa().indexOf(char) > -1
-                    ) {
-                      list.push(
-                        <ProdItem
-                          onPress={changeMa}
-                          value={StaticData.dataProds[i]}
-                        />
-                      );
-                    }
-                  }
-
-                  setList(list);
-                }}
-              >
-                <Text
-                  style={{ fontSize: 20, color: "green", fontWeight: "bold" }}
-                >
-                  THÊM
-                </Text>
-              </Pressable>
-            </View>
-
-            {/* DANH SÁCH SẢN PHẨM */}
-            <Text style={styles.title}>SẢN PHẨM ĐÃ THÊM</Text>
-            <View style={styles.form}>
-              <TextInput
-                placeholder="Nhập tên Bill"
-                value={shop}
-                style={styles.input}
-                onChangeText={setShop}
-              />
-              <Pressable
-                style={styles.btnR}
-                onPress={() => {
-                  if (shop != "") {
-                    let tong = 0;
-                    for (let i = 0; i < StaticData.dataListSell.length; i++) {
-                      let index = StaticData.dataProds.findIndex(
-                        (prod) =>
-                          prod.getID() == StaticData.dataListSell[i].getProdID()
-                      );
-                      StaticData.dataProds[index].setSoLuong(
-                        StaticData.dataProds[index].getSoLuong() -
-                          StaticData.dataListSell[i].getSoLuong()
-                      );
-                      tong += StaticData.dataListSell[i].getGiaBan();
-                    }
-                    StaticData.dataBill.push(new Bill(null, shop, tong));
-                    alert("Đã Tạo Bill!");
-                    StaticData.dataListSell = [];
-                    setViewSell(null);
-                    setShop("");
-                  } else {
-                    alert("Chưa Nhập Tên Bill");
-                  }
-                }}
-              >
-                <Text
-                  style={{ fontSize: 20, color: "green", fontWeight: "bold" }}
-                >
-                  TẠO BILL ✅
-                </Text>
-              </Pressable>
-            </View>
-            <ScrollView style={{ width: "100%" }}>{listViewSell}</ScrollView>
+                }
+                setList(list);
+              }}
+            >
+              <Text style={styles.btnText}>TÌM KIẾM 🔎</Text>
+            </Pressable>
           </View>
-        </ScrollView>
 
-        <View style={styles.navbar}>
-          <Pressable
-            onPress={() => {
-              navigation.navigate("Home");
-            }}
-          >
-            <Image
-              style={styles.navIcon}
-              source={require("../../assets/home.png")}
+          {/* hien thi ds sp */}
+          <ScrollView style={{ height: 350, width: "100%" }}>
+            {listProds}
+          </ScrollView>
+
+          {/* Them So Luong */}
+          <View style={{ width: "90%", marginBottom: 5, marginRight: -340 }}>
+            <TextInput
+              placeholder="SL"
+              style={{
+                fontSize: 20,
+                marginTop: 5,
+                paddingLeft: 10,
+                width: "20%",
+                height: 30,
+                borderWidth: 1,
+                borderRadius: 5,
+              }}
+              value={sl}
+              onChangeText={(index) => {
+                if (
+                  index[index.length - 1] <= "9" &&
+                  index[index.length - 1] >= "0"
+                ) {
+                  setSL(index);
+                } else if (index == "") {
+                  setSL("");
+                }
+              }}
             />
-          </Pressable>
-          <Pressable
-            onPress={() => {
-              navigation.navigate("Add");
-            }}
-          >
-            <Image
-              style={styles.navIcon}
-              source={require("../../assets/add.png")}
+            <Pressable
+              style={{
+                position: "absolute",
+                left: 90,
+                marginTop: 5,
+                width: "20%",
+                height: 30,
+                alignItems: "center",
+                borderColor: "green",
+                borderWidth: 1,
+                borderRadius: 5,
+              }}
+              onPress={() => {
+                if (sl != "" && ma != "") {
+                  for (let i = 0; i < StaticData.dataProds.length; i++) {
+                    if (StaticData.dataProds[i].getID() == ma) {
+                      pushList(StaticData.dataProds[i]);
+                      setMa("");
+                      setSL("");
+                      break;
+                    }
+                  }
+                } else {
+                  alert("Chưa Chọn Sản Phẩm! \nChưa Nhập Số Lượng!");
+                }
+
+                let list = [];
+                for (let i = 0; i < StaticData.dataProds.length; i++) {
+                  if (
+                    StaticData.dataProds[i].getTen().indexOf(char) > -1 ||
+                    StaticData.dataProds[i].getMoTa().indexOf(char) > -1
+                  ) {
+                    list.push(
+                      <ProdItem
+                        onPress={changeMa}
+                        value={StaticData.dataProds[i]}
+                      />
+                    );
+                  }
+                }
+
+                setList(list);
+              }}
+            >
+              <Text
+                style={{ fontSize: 20, color: "green", fontWeight: "bold" }}
+              >
+                THÊM
+              </Text>
+            </Pressable>
+          </View>
+
+          {/* DANH SÁCH SẢN PHẨM */}
+          <Text style={styles.title}>SẢN PHẨM ĐÃ THÊM</Text>
+          <View style={styles.form}>
+            <TextInput
+              placeholder="Nhập tên Bill"
+              value={shop}
+              style={styles.input}
+              onChangeText={setShop}
             />
-          </Pressable>
-          <Pressable
-            onPress={() => {
-              navigation.navigate("Find");
-            }}
-          >
-            <Image
-              style={styles.navIcon}
-              source={require("../../assets/search.png")}
-            />
-          </Pressable>
-          <Pressable
-            onPress={() => {
-              navigation.navigate("Import");
-            }}
-          >
-            <Image
-              style={styles.navIcon}
-              source={require("../../assets/addP.png")}
-            />
-          </Pressable>
-          <Pressable
-            onPress={() => {
-              navigation.navigate("ScreenBill");
-            }}
-          >
-            <Image
-              style={styles.navIcon}
-              source={require("../../assets/shopAccess.png")}
-            />
-          </Pressable>
-          <Pressable
-            onPress={() => {
-              navigation.navigate("ListBill");
-            }}
-          >
-            <Image
-              style={styles.navIcon}
-              source={require("../../assets/bill.png")}
-            />
-          </Pressable>
+            <Pressable
+              style={styles.btnR}
+              onPress={() => {
+                if (shop != "") {
+                  let tong = 0;
+                  for (let i = 0; i < StaticData.dataListSell.length; i++) {
+                    let index = StaticData.dataProds.findIndex(
+                      (prod) =>
+                        prod.getID() == StaticData.dataListSell[i].getProdID()
+                    );
+                    StaticData.dataProds[index].setSoLuong(
+                      StaticData.dataProds[index].getSoLuong() -
+                      StaticData.dataListSell[i].getSoLuong()
+                    );
+                    tong += StaticData.dataListSell[i].getGiaBan();
+                  }
+                  StaticData.dataBill.push(new Bill(null, shop, tong));
+                  alert("Đã Tạo Bill!");
+                  StaticData.dataListSell = [];
+                  setViewSell(null);
+                  setShop("");
+                } else {
+                  alert("Chưa Nhập Tên Bill");
+                }
+              }}
+            >
+              <Text
+                style={{ fontSize: 20, color: "green", fontWeight: "bold" }}
+              >
+                TẠO BILL ✅
+              </Text>
+            </Pressable>
+          </View>
+          <ScrollView style={{ width: "100%" }}>{listViewSell}</ScrollView>
         </View>
+      </ScrollView>
+
+      <View style={styles.navbar}>
+        <Pressable
+          onPress={() => {
+            navigation.navigate("Home");
+          }}
+        >
+          <Image
+            style={styles.navIcon}
+            source={require("../../assets/home.png")}
+          />
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            navigation.navigate("Add");
+          }}
+        >
+          <Image
+            style={styles.navIcon}
+            source={require("../../assets/add.png")}
+          />
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            navigation.navigate("Find");
+          }}
+        >
+          <Image
+            style={styles.navIcon}
+            source={require("../../assets/search.png")}
+          />
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            navigation.navigate("Import");
+          }}
+        >
+          <Image
+            style={styles.navIcon}
+            source={require("../../assets/addP.png")}
+          />
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            navigation.navigate("ScreenBill");
+          }}
+        >
+          <Image
+            style={styles.navIcon}
+            source={require("../../assets/shopAccess.png")}
+          />
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            navigation.navigate("ListBill");
+          }}
+        >
+          <Image
+            style={styles.navIcon}
+            source={require("../../assets/bill.png")}
+          />
+        </Pressable>
       </View>
+    </View>
   );
 }
 
@@ -295,17 +295,18 @@ const styles = StyleSheet.create({
 
   navbar: {
     width: "100%",
-    height: 50, // Set a fixed height for the navbar
+    height: 50,
     position: "absolute",
     bottom: 0,
     backgroundColor: "#20c7b7",
     flexDirection: "row",
-    justifyContent: "space-around", // Adjust as needed
+    justifyContent: "space-around",
     alignItems: "center",
   },
-  
+
   container: {
     alignItems: "center",
+    flex: 1,
   },
 
   title: {
