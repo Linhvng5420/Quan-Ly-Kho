@@ -23,12 +23,10 @@ const styles = StyleSheet.create({
     width: '70%', // Giảm chiều rộng xuống 50%
   },
   content: {
-    paddingTop: 2, // Giảm khoảng cách từ phía trên của nội dung xuống 50%
-    fontSize: 15, // Giảm cỡ chữ xuống 50%
+    fontSize: 20, // Giảm cỡ chữ xuống 50%
     fontWeight: 'bold',
-    textAlign: 'start',
+    // textAlign: 'start',
     paddingLeft: 10,
-    height: 25 // Giảm chiều cao xuống 50%
   },
   contentP: {
     alignSelf: 'flex-end',

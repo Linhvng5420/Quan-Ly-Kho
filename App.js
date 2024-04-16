@@ -6,8 +6,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import StaticData from './components/Data';
 import ListBill from './components/Views/ListBill';
 import formScreenBill from './components/Views/ScBill';
-import ProdDetail from './components/Views/ProdDetail';
-import Login from './components/Views/Login';
 
 const Stack = createNativeStackNavigator();
 StaticData.setData();
