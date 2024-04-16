@@ -90,20 +90,18 @@ const styles = StyleSheet.create({
     height: 30,
     marginHorizontal: 10
   },
+  
   navbar: {
     width: "100%",
-    height: "5%",
-    alignSelf: "center",
+    height: 50,
     position: "absolute",
     bottom: 0,
     backgroundColor: "#20c7b7",
-    borderColor: "black",
     flexDirection: "row",
-    flex: 1,
-    justifyContent: "center",
+    justifyContent: "space-around",
     alignItems: "center",
-    // borderRadius: 25,
   },
+
   container: {
     height: '77%',
     backgroundColor: '#FFF',
