@@ -28,15 +28,20 @@ export default function Home({ navigation }) {
         <Text style={styles.title}>Danh Sách Sản Phẩm</Text>
         <Pressable
           style={styles.btn}
-          onPress={() => {
-            let list = [];
-            for (let i = 0; i < StaticData.dataProds.length; i++) {
-              list.push(
-                <ProdItem onPress={changeNav} value={StaticData.dataProds[i]} />
-              );
-            }
-            setList(list);
-          }}>
+            oonPress={() => {
+              let newList = []; // Tạo một mảng mới để chứa các phần tử mới
+            
+              // Thêm các phần tử mới vào mảng newList
+              for (let i = 0; i < StaticData.dataProds.length; i++) {
+                newList.push(
+                  <ProdItem onPress={changeNav} value={StaticData.dataProds[i]} />
+                );
+              }
+            
+              // Cập nhật state list với mảng mới đã được tạo
+              setList(newList);
+            }}
+            >
           <Text style={styles.btnText}>LÀM MỚI</Text>
         </Pressable>
         <ScrollView style={styles.container}>{listProds}</ScrollView>
