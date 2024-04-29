@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "QuanLyKho",
-    "slug": "QuanLyKho",
+    "name": "quanlykho",
+    "slug": "snack-b13f52b0-f3cc-4845-bdae-d12afc451fe1",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +25,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "DoAnDiDong3_QuanLyKhoHang"
   }
 }
